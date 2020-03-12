@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.kgisl.vehicleinsurance.dao.VehicleDao;
 import com.kgisl.vehicleinsurance.model.EngineCapacity;
@@ -18,6 +19,7 @@ import com.kgisl.vehicleinsurance.model.User;
 import com.kgisl.vehicleinsurance.model.Vehicle;
 import com.kgisl.vehicleinsurance.model.VehicleColor;
 import com.kgisl.vehicleinsurance.model.VehicleModel;
+import com.kgisl.vehicleinsurance.model.VehicleSubModel;
 /**
  * 
  * @author Ravina Thangavel
@@ -91,6 +93,12 @@ public class VehicleController {
 	@RequestMapping(value = "/getCC", method = RequestMethod.GET)
 	public @ResponseBody List<EngineCapacity> getCC() throws Exception {
 		return vehicleDao.getCC();
+
+	}
+	
+	@RequestMapping(value = "/getSubModel/", method = RequestMethod.GET)
+	public @ResponseBody List<VehicleSubModel> getSubModels(@RequestParam String vehicle_model) throws Exception {
+		return vehicleDao.getSubModels(vehicle_model);
 
 	}
 

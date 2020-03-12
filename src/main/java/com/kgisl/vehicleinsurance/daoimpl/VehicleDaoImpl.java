@@ -16,6 +16,7 @@ import com.kgisl.vehicleinsurance.model.SeatingCapacity;
 import com.kgisl.vehicleinsurance.model.Vehicle;
 import com.kgisl.vehicleinsurance.model.VehicleColor;
 import com.kgisl.vehicleinsurance.model.VehicleModel;
+import com.kgisl.vehicleinsurance.model.VehicleSubModel;
 
 public class VehicleDaoImpl implements VehicleDao
 
@@ -28,20 +29,21 @@ public class VehicleDaoImpl implements VehicleDao
 	}
 
 	public Boolean add(final Vehicle v) {
-		String query = "insert into vehicle values(?,?,?,?,?,?,?,?,?,?)";
+		String query = "insert into vehicle values(?,?,?,?,?,?,?,?,?,?,?)";
 		return jdbcTemplate.execute(query, new PreparedStatementCallback<Boolean>() {
 
 			public Boolean doInPreparedStatement(PreparedStatement ps) throws SQLException, DataAccessException {
-				ps.setInt(1, v.getUser_id());
+				ps.setInt(1,v.getUser_id());
 				ps.setString(2, v.getRegistration_number());
 				ps.setString(3, v.getChassis_number());
 				ps.setString(4, v.getEngine_number());
 				ps.setString(5, v.getRegistration_place());
 				ps.setString(6, v.getManufacturing_year());
 				ps.setString(7, v.getVehicle_model());
-				ps.setString(8, v.getEngine_capacity());
-				ps.setString(9, v.getSeating_capacity());
-				ps.setString(10, v.getVehicle_color());
+				ps.setString(8, v.getVehicle_submodel());
+				ps.setString(9, v.getEngine_capacity());
+				ps.setString(10,v.getSeating_capacity());
+				ps.setString(11, v.getVehicle_color());
 
 				return ps.execute();
 
@@ -63,11 +65,11 @@ public class VehicleDaoImpl implements VehicleDao
 				v.setRegistration_place(rs.getString(5));
 				v.setManufacturing_year(rs.getString(6));
 				v.setVehicle_model(rs.getString(7));
+                v.setVehicle_submodel(rs.getString(8));
+				v.setEngine_capacity(rs.getString(9));
+				v.setSeating_capacity(rs.getString(10));
 
-				v.setEngine_capacity(rs.getString(8));
-				v.setSeating_capacity(rs.getString(9));
-
-				v.setVehicle_color(rs.getString(10));
+				v.setVehicle_color(rs.getString(11));
 
 				return v;
 			}
@@ -89,9 +91,10 @@ public class VehicleDaoImpl implements VehicleDao
 				v.setRegistration_place(rs.getString(5));
 				v.setManufacturing_year(rs.getString(6));
 				v.setVehicle_model(rs.getString(7));
-				v.setEngine_capacity(rs.getString(8));
-				v.setSeating_capacity(rs.getString(9));
-				v.setVehicle_color(rs.getString(10));
+				v.setVehicle_submodel(rs.getString(8));
+				v.setEngine_capacity(rs.getString(9));
+				v.setSeating_capacity(rs.getString(10));
+				v.setVehicle_color(rs.getString(11));
 
 				return v;
 
@@ -184,6 +187,21 @@ public class VehicleDaoImpl implements VehicleDao
 				EngineCapacity e = new EngineCapacity();
 				e.setEngine_capacity(rs.getString("engine_capacity"));
 				return e;
+			}
+		});
+	}
+	
+
+	public List<VehicleSubModel> getSubModels(String vehicle_model)
+
+	{
+		System.out.println(vehicle_model);
+		return jdbcTemplate.query("select * from vehicle_submodel where vehicle_model='" + vehicle_model + "'", new RowMapper<VehicleSubModel>() {
+			public VehicleSubModel mapRow(ResultSet rs, int row) throws SQLException {
+				VehicleSubModel v = new VehicleSubModel();
+				v.setVehicle_model(rs.getString("vehicle_model"));
+				v.setVehicle_submodel(rs.getString("vehicle_submodel"));
+				return v;
 			}
 		});
 	}

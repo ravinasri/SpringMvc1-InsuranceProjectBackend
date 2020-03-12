@@ -6,12 +6,12 @@ import com.kgisl.vehicleinsurance.model.Login;
 
 public interface LoginDao {
 
-//	public List<Login> getAll();
+	public List<Login> getAll(String username,String password);
 
 	public Boolean add(final Login l);
 
-	public List<Login> getById(int user_id);
+//	public List<Login> getById(int user_id);
 	
-	public int getAll(Login log);
+//	public int getAll(Login log);
 
 }

@@ -41,29 +41,29 @@ public class LoginController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
-	public @ResponseBody List<Login> getAll() {
-		System.out.println("tes");
-		return loginDao.getAll();
-
-	}
-
-//	@RequestMapping(method = RequestMethod.POST)
-//	public String add(@RequestBody Login l) throws SQLException {
-//		loginDao.add(l);
-//		return "redirect:/login";
-//	}
-
-	@RequestMapping(value = "/{user_id}", method = RequestMethod.GET)
-	public @ResponseBody List<Login> getById(@PathVariable int user_id) throws Exception {
-		return loginDao.getById(user_id);
+	public @ResponseBody List<Login> getAll(@RequestParam String username,@RequestParam String password) {
+		System.out.println("tesss"+username+"vvgvg "+password);
+		return loginDao.getAll(username, password);
 
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public @ResponseBody int getAll(@RequestBody Login log) {
-		System.out.println("sdgrt");
-		int a2 = loginDao.getAll(log);
-		return a2;
+	public String add(@RequestBody Login l) throws SQLException {
+		loginDao.add(l);
+		return "redirect:/login";
 	}
+
+//	@RequestMapping(value = "/{user_id}", method = RequestMethod.GET)
+//	public @ResponseBody List<Login> getById(@PathVariable int user_id) throws Exception {
+//		return loginDao.getById(user_id);
+//
+//	}
+
+//	@RequestMapping(method = RequestMethod.POST)
+//	public @ResponseBody int getAll(@RequestBody Login log) {
+//		System.out.println("sdgrt");
+//		int a2 = loginDao.getAll(log);
+//		return a2;
+//	}
 
 }

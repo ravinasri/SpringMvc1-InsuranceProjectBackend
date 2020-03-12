@@ -33,7 +33,7 @@ public class UserController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public @ResponseBody List<User> getAll() {
-		System.out.println("tes");
+	
 		return userDao.getAll();
 
 	}

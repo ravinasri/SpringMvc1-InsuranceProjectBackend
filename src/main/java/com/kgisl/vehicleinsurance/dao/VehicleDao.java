@@ -9,6 +9,7 @@ import com.kgisl.vehicleinsurance.model.SeatingCapacity;
 import com.kgisl.vehicleinsurance.model.Vehicle;
 import com.kgisl.vehicleinsurance.model.VehicleColor;
 import com.kgisl.vehicleinsurance.model.VehicleModel;
+import com.kgisl.vehicleinsurance.model.VehicleSubModel;
 
 public interface VehicleDao {
 	
@@ -19,6 +20,8 @@ public interface VehicleDao {
 	public List<Vehicle> getById(int user_id);
 	
 	public List<VehicleModel> getModels();
+	
+	public List<VehicleSubModel> getSubModels(String vehicle_model);
 	
 	public List<RegistrationPlace> getPlace();
 	

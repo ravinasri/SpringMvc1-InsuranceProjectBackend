@@ -9,6 +9,7 @@ public class Vehicle {
 	private String registration_place;
 	private String manufacturing_year;
 	private String vehicle_model;
+	private String vehicle_submodel;
 	private String engine_capacity;
 	private String seating_capacity;
 	private String vehicle_color;
@@ -69,6 +70,15 @@ public class Vehicle {
 		this.vehicle_model = vehicle_model;
 	}
 
+	
+	public String getVehicle_submodel() {
+		return vehicle_submodel;
+	}
+
+	public void setVehicle_submodel(String vehicle_submodel) {
+		this.vehicle_submodel = vehicle_submodel;
+	}
+
 	public String getEngine_capacity() {
 		return engine_capacity;
 	}
@@ -94,7 +104,7 @@ public class Vehicle {
 	}
 	
 	public Vehicle(int user_id, String registration_number, String chassis_number, String engine_number,
-			String registration_place, String manufacturing_year, String vehicle_model, String engine_capacity,
+			String registration_place, String manufacturing_year, String vehicle_model,String vehicle_submodel, String engine_capacity,
 			String seating_capacity, String vehicle_color) {
 		super();
 		this.user_id = user_id;
@@ -104,6 +114,7 @@ public class Vehicle {
 		this.registration_place = registration_place;
 		this.manufacturing_year = manufacturing_year;
 		this.vehicle_model = vehicle_model;
+		this.vehicle_submodel = vehicle_submodel;
 		this.engine_capacity = engine_capacity;
 		this.seating_capacity = seating_capacity;
 		this.vehicle_color = vehicle_color;
@@ -120,7 +131,7 @@ public class Vehicle {
 		return "Vehicle [user_id=" + user_id + ", registration_number=" + registration_number + ", chassis_number="
 				+ chassis_number + ", engine_number=" + engine_number + ", registration_place=" + registration_place
 				+ ", manufacturing_year=" + manufacturing_year + ", vehicle_model=" + vehicle_model
-				+ ", engine_capacity=" + engine_capacity + ", seating_capacity=" + seating_capacity + ", vehicle_color="
+				+ ", vehicle_submodel=" + vehicle_submodel+ ", engine_capacity=" + engine_capacity + ", seating_capacity=" + seating_capacity + ", vehicle_color="
 				+ vehicle_color + "]";
 	}
 
